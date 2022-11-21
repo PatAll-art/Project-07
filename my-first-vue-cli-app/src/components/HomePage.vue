@@ -1,13 +1,12 @@
 <template>
-    <div>
-    <h1>Welcome to Groupomania</h1>
-</div>
+<h1>Hello</h1>
 </template>
 
 <script>
 export default {
-    name: 'Home'
+    name:'HomePage'
 }
+
 </script>
 
 <style lang="scss">
