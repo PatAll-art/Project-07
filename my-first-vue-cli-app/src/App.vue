@@ -1,36 +1,56 @@
 <template>
   <div id="app">
-   
-    <HomePage/>
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/signup">Sign Up</router-link> |
+      <router-link to="/login">Log In</router-link> |
+      <router-link to="/threads">Threads</router-link> 
+    </nav>
+     
+    <router-view/>
+    <v-footer id="footer">
+      <img class="logoFooter" src="./assets/icon-left-font-monochrome-white.svg"/>
+    </v-footer>
   </div>
-</template>
 
-<script>
-import HomePage from './components/HomePage.vue'
-export default {
-  name: 'App',
-  components: {
-    HomePage
-  }
-}
-</script>
+</template>
 
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-evenly;
-  align-items: center;
+  text-align: center;
   color: #2c3e50;
-  font-size: 12px;
-  border-bottom: 2px;
-  border-style: black;
 }
 
+nav {
+  padding: 30px;
 
+  a {
+    font-weight: bold;
+    color: #2c3e50;
 
+    &.router-link-exact-active {
+      color: #152147;;
+    }
+  }
+}
+#footer{
+  width: 100%;
+  position: absolute;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 50px;
+  background-color: #2c3e50;
+ border-top: solid 5px;
+    .logoFooter {
+      width: 15%;
+    }
+ 
+}
 
 </style>

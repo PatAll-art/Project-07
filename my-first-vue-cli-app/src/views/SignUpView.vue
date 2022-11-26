@@ -1,21 +1,22 @@
 <template>
     <div id="signUp">
-    <img class="logo" src="../assets/icon-left-font-monochrome-white.svg"/>
-    <h1>Sign Up</h1>
-    <div class="registerAcc">
-        <input type="text" placeholder="Username"/>
-        <input type="email" placeholder="Email"/>
-        <input type="password" placeholder="Password"/>
-        <button>Enter</button>
+        <img class="logo" src="../assets/icon-left-font-monochrome-white.svg" />
+        <h1>Sign Up</h1>
+        <div class="registerAcc">
+            <input type="text" placeholder="Username" />
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <button>Enter</button>
+        </div>
     </div>
-</div>
 </template>
 
 <script>
-export default {
-    name: 'SignUp'
-}
+
+
+
 </script>
+
 
 <style lang="scss">
 #signUp {
@@ -24,6 +25,7 @@ export default {
     flex-wrap: nowrap;
     align-items: center;
 }
+
 .logo {
     width: 50%;
     background-color: #152147;
@@ -44,6 +46,7 @@ export default {
     height: 20px;
     margin-bottom: 20px;
 }
+
 .registerAcc button {
     border: none;
     border-radius: 30px;
@@ -54,7 +57,8 @@ export default {
     color: white;
     background-color: darkgrey;
     align-items: center;
-} 
+    margin-bottom: 20px;
+}
 
 .registerAcc {
     display: flex;
