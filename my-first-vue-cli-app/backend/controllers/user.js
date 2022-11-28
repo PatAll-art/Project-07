@@ -7,15 +7,19 @@ const db = require('../helpers/db');
 console.log('first hello');
 
 exports.signup = (req, res, next) => {
-    if ( db.User.findOne({ where: { email: params.email } })) {
-        throw 'Email "' + params.email + '" is already registered';
-    }
+    db.User.findOne({ where: { email: req.body.email } })
+    .then(user => {
+        if (user) {
+            throw 'Email "' + req.body.email + '" is already registered';
+        }
+    });
+    
 
     bcrypt.hash(req.body.password, 10).then(
         (hash) => {
             const user = new db.User({
                 email: req.body.email,
-                password: hash,
+                passwordHash: hash,
                 userName: req.body.userName
             }); 
             user.save().then(

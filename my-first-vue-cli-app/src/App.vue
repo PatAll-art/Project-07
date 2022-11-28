@@ -4,13 +4,13 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/signup">Sign Up</router-link> |
       <router-link to="/login">Log In</router-link> |
-      <router-link to="/threads">Threads</router-link> 
+      <router-link to="/threads">Threads</router-link>
     </nav>
-     
-    <router-view/>
-    <v-footer id="footer">
-      <img class="logoFooter" src="./assets/icon-left-font-monochrome-white.svg"/>
-    </v-footer>
+
+    <router-view />
+    <footer id="footer">
+      <img class="logoFooter" src="./assets/icon-left-font-monochrome-white.svg" />
+    </footer>
   </div>
 
 </template>
@@ -32,11 +32,13 @@ nav {
     color: #2c3e50;
 
     &.router-link-exact-active {
-      color: #152147;;
+      color: #152147;
+      ;
     }
   }
 }
-#footer{
+
+#footer {
   width: 100%;
   position: absolute;
   align-self: center;
@@ -46,11 +48,11 @@ nav {
   align-items: center;
   padding: 50px;
   background-color: #2c3e50;
- border-top: solid 5px;
-    .logoFooter {
-      width: 15%;
-    }
- 
-}
+  border-top: solid 5px;
 
+  .logoFooter {
+    width: 15%;
+  }
+
+}
 </style>

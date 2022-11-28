@@ -2,16 +2,49 @@
     <div id="signUp">
         <img class="logo" src="../assets/icon-left-font-monochrome-white.svg" />
         <h1>Sign Up</h1>
-        <div class="registerAcc">
-            <input type="text" placeholder="Username" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button>Enter</button>
+        <div>
+            <form class="registerAcc" @submit.prevent="signup" >
+                <input type="text" v-model="userName" placeholder="Username" />
+                <input type="email" v-model="email" placeholder="Email" />
+                <input type="password" v-model="password" placeholder="Password" />
+                <button type="submit" value="register">Enter</button>
+            </form>
         </div>
     </div>
 </template>
 
 <script>
+
+ export default {
+    data() {
+        return {
+            email: "",
+            userName: "",
+            password: "",
+    };
+},
+    methods: {
+        // Sign up form email and password
+        signup() {
+            const Url = 'http://localhost:3000/api/auth/signup';
+            const data = {
+                userName: this.userName,
+                email: this.email,
+                password: this.password,
+            };
+            fetch(Url, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(res => res.json())
+            .then(data => console.log(data));
+
+        }
+    }
+}
 
 
 
@@ -58,7 +91,7 @@
     background-color: darkgrey;
     align-items: center;
     margin-bottom: 20px;
-}
+} 
 
 .registerAcc {
     display: flex;

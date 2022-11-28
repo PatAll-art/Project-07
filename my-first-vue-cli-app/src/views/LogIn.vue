@@ -11,6 +11,10 @@
 
 </template>
 
+<script>
+
+</script>
+
 <style lang="scss">
 #logIn {
     display: flex;
