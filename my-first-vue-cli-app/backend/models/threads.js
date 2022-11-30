@@ -5,11 +5,11 @@ module.exports = model;
 function model(sequelize) {
   const attributes = {
     userName: { type: DataTypes.STRING, allowNull: false },
-    email: { type: DataTypes.STRING, allowNull: false },
-    passwordHash: { type: DataTypes.STRING, allowNull: false },
+    text: { type: DataTypes.TEXT, allowNull: false },
+    title: { type: DataTypes.TEXT, allowNull: false },
   };
 
 
-return sequelize.define('User', attributes);
+return sequelize.define('Thread', attributes);
 
 }

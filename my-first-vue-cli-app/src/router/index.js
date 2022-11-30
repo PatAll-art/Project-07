@@ -26,7 +26,13 @@ const routes = [
     path: '/threads',
     name: 'Threads',
     component: () => import('../views/ForumPage.vue')
+  },
+  {
+    path: '/newpost',
+    name: 'newPost',
+    component: () => import('../views/NewThread.vue')
   }
+
 ]
 
 const router = new VueRouter({

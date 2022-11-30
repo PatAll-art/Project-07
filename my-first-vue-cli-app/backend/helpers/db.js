@@ -19,7 +19,7 @@ function initialize() {
 
   // init models and add them to the exported db object
     db.User = require('../models/users')(sequelize);
-
+    db.Thread = require('../models/threads')(sequelize);
   // sync all models with database
     sequelize.sync({ alter: true });
 }

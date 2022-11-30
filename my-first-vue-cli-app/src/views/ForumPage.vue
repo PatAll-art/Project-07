@@ -1,54 +1,59 @@
 <template>
-<div>
-    <h1>Today's talk</h1>
-<p>Please post</p>
-<ol class="threadList">
-    <li class="thread">
-        <a href="#">
-            <h3>Thread 1</h3>
-        </a>
-        <div class="threadCont">
-            <p class="msg">
-                Talking about that talk
-            </p>
-            <p class="timeStamp">10/21/2022</p>
-            <p class="commentCount">10 comments</p>
+    <div>
+        <div class="mainLayout">
+            <h1>Today's talk</h1>
+            <h2>
+                <router-link to="/newpost" class="postLink">Post it!</router-link>
+            </h2>
         </div>
-    </li>
-    <li class="thread">
-        <a href="#">
-            <h3>Thread 2</h3>
-        </a>
-        <div class="threadCont">
-            <p class="msg">
-                Talking about that talk
-            </p>
-            <p class="timeStamp">10/21/2022</p>
-            <p class="commentCount">10 comments</p>
+        <div>
+           <o class="threadList">
+            <li class="singleThread" v-for="thread in threads" v-bind:key="thread.id">
+                <a href="">{{ thread.title }}</a>
+            </li>
+           </o>
         </div>
-    </li>
-    <li class="thread">
-        <a href="#">
-            <h3>Thread 3</h3>
-        </a>
-        <div class="threadCont">
-            <p class="msg">
-                Talking about that talk
-            </p>
-            <p class="timeStamp">10/21/2022</p>
-            <p class="commentCount">10 comments</p>
-        </div>
-    </li>
-</ol>
-</div>
+
+    </div>
+
 </template>
 <script>
 
+export default {
+    data() {
+        return {
+            threads: []
+        };
+    },
+    created() {
+        const Url = 'http://localhost:3000/api/threads';
+            fetch(Url, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + this.$store.state.token
+                }
+            }).then(res => res.json())
+            .then(res => {
+                this.threads = res;
+            })
+    },
+  
+}
 
 </script>
 
 <style>
 
+.mainLayout {
+    display:flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
 .thread {
     display: flex;
     flex-direction: row;
@@ -60,24 +65,43 @@
     padding: 8px;
     flex-wrap: wrap;
     justify-content: space-between;
-    
 
-} a {
+
+}
+
+a {
     text-decoration: none;
-    color: white;
+    color: #152147;
     font-weight: bolder;
-} .threadCont {
-    display: flex;
-    flex-direction: row;
-    color: white;
-    flex-wrap: wrap;
-    justify-content: space-between;
-} .threadList{
+}
+
+
+.threadList {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
+    list-style: none;
+    margin:10px;
+}
+.singleThread {
+    width: 45%;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    border-radius: 30px;
+    background-color: darkgrey;
+    margin: 10px;
 }
 
+.postLink {
+    color: #152147;
+    background-color: white;
+    padding: 15px;
+    border-radius: 30px;
+    border: solid #152147;
+}
 </style>

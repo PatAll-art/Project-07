@@ -39,14 +39,15 @@ exports.signup = (req, res, next) => {
     );
 };
 exports.login = (req, res, next) => {
-    User.findOne({ email: req.body.email }).then(
+    db.User.findOne({ userName: req.body.userName }).then(
       (user) => {
+        console.log(user);
         if (!user) {
           return res.status(401).json({
             error: new Error('User not found!')
           });
         }
-        bcrypt.compare(req.body.password, user.password).then(
+        bcrypt.compare(req.body.password, user.passwordHash).then(
           (valid) => {
             if (!valid) {
               return res.status(401).json({
@@ -58,7 +59,7 @@ exports.login = (req, res, next) => {
               'RANDOM_TOKEN_SECRET',
               { expiresIn: '24h' });
             res.status(200).json({
-              userId: user._id,
+              userId: user.userName,
               token: token
             });
           }

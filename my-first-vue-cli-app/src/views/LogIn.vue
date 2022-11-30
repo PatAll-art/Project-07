@@ -3,15 +3,53 @@
         <img class="logo" src="../assets/icon-left-font-monochrome-white.svg" />
         <h1>Log In</h1>
         <div class="registerAcc">
-            <input type="text" placeholder="Username" />
-            <input type="password" placeholder="Password" />
-            <button>Enter</button>
+            <input type="text" v-model="userName" placeholder="Username" />
+            <input type="password" v-model="password" placeholder="Password" />
+            <button type="submit" @click="logIn">Enter</button>
         </div>
     </div>
 
 </template>
 
 <script>
+
+import router from '../router/index'
+
+export default {
+    data() {
+        return {
+            userName: "",
+            password: "",
+        };
+    },
+    methods: {
+        logIn() {
+            const Url = 'http://localhost:3000/api/auth/login';
+            const data = {
+                userName: this.userName,
+                password: this.password,
+            };
+            fetch(Url, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(res => res.json())
+                .then(data => {
+                    if (data.userId != null) {
+                        console.log(data);
+                        this.$store.dispatch('setUserId', data.userId);
+                        this.$store.dispatch('setToken', data.token);
+                        router.push("Threads");
+                    }
+
+                });
+
+        }
+    }
+}
 
 
 </script>
