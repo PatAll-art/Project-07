@@ -39,7 +39,7 @@ exports.getThread = (req, res, next) => {
 exports.getOneThread = (req, res, next) => {
     db.Thread.findOne({
         where: { id: req.params.id}
-    }) .then((thrad) => {
+    }) .then((thread) => {
         res.status(200).json(thread);
       })
       .catch((error) => {

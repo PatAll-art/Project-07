@@ -1,28 +1,16 @@
 <template>
+    <div>
         <div id="homeBanner">
-    <img class="logo" src="../assets/icon-left-font-monochrome-white.svg"/>
-<h1>Welcome to Groupomania</h1>
+            <img class="logo" src="../assets/icon-left-font-monochrome-white.svg" />
+            <h1>Welcome to Groupomania</h1>
             <h3>Social space for everyone</h3>
-            <ul class="forumCard">
-                
-                <li class="article">
-                    Dogs treat
-                </li>
-                <li class="article">
-                    Dogs Tricks
-                </li>
-                <li class="article">
-                    Selfie of the year
-                </li>
-            </ul>
-        </div>
 
+        </div>
+    </div>
 </template>
 
 <script>
-export default {
-    name:'HomePage'
-}
+
 
 </script>
 
@@ -33,6 +21,7 @@ export default {
     flex-wrap: nowrap;
     align-items: center;
 }
+
 .logo {
     width: 50%;
     background-color: #152147;
@@ -49,5 +38,4 @@ export default {
     list-style: none;
 
 }
-
 </style>

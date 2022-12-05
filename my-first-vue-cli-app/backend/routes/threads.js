@@ -8,4 +8,5 @@ router.get('/', auth, threadCtrl.getThread);
 router.get('/:id', auth, threadCtrl.getOneThread);
 
 
+
 module.exports = router;

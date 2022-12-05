@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-
 
 
 Vue.use(VueRouter)
@@ -10,7 +8,12 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: () => import('../components/HomePage.vue')
+  },
+  {
+    path: '/home',
+    name: 'homepage',
+    component: () => import('../components/HomePage.vue')
   },
   {
     path: '/signup',
@@ -31,8 +34,12 @@ const routes = [
     path: '/newpost',
     name: 'newPost',
     component: () => import('../views/NewThread.vue')
+  },
+  {
+    path: '/singlethread/:id',
+    name: 'singleThread',
+    component: ()=> import('../views/SingleThread.vue')
   }
-
 ]
 
 const router = new VueRouter({

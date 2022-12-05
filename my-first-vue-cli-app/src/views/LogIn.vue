@@ -46,7 +46,10 @@ export default {
                     }
 
                 });
-
+        },
+        logOut() {
+            this.$store.dispatch('setUserId', null);
+            this.$store.dispatch('setToken', null);
         }
     }
 }

@@ -1,5 +1,6 @@
 const userRoutes = require('./routes/user');
 const threadRoutes = require('./routes/threads');
+const commentRoutes = require('./routes/comment');
 const { JsonWebTokenError } = require('jsonwebtoken');
 const router = require('./routes/user');
 const path = require('path');
@@ -18,6 +19,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/auth', userRoutes);
-app.use('/api/threads', threadRoutes );
+app.use('/api/threads/', threadRoutes);
+app.use('/api/comment/', commentRoutes);
+
 
 module.exports = app;

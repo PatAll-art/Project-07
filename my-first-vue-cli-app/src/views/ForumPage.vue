@@ -7,11 +7,12 @@
             </h2>
         </div>
         <div>
-           <o class="threadList">
+           <ol class="threadList">
             <li class="singleThread" v-for="thread in threads" v-bind:key="thread.id">
-                <a href="">{{ thread.title }}</a>
+               <router-link :to="'/singlethread/' +  thread.id"> {{ thread.title }} </router-link>
+                <p>{{ thread.text }}</p>
             </li>
-           </o>
+           </ol>
         </div>
 
     </div>
@@ -98,10 +99,11 @@ a {
 }
 
 .postLink {
-    color: #152147;
-    background-color: white;
-    padding: 15px;
+    color: white;
+    background-color: #152147;
+    padding: 20px;
     border-radius: 30px;
     border: solid #152147;
 }
+
 </style>

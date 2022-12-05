@@ -4,7 +4,8 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/signup">Sign Up</router-link> |
       <router-link to="/login">Log In</router-link> |
-      <router-link to="/threads">Threads</router-link>
+      <router-link to="/threads">Threads</router-link> |
+      <button @click="logOut">Logout</button>
     </nav>
 
     <router-view />
@@ -14,6 +15,25 @@
   </div>
 
 </template>
+
+<script>
+import router from './router/index'
+export default {
+  data() {
+    return {
+
+    };
+  },
+  methods: {
+    logOut() {
+      this.$store.dispatch('setUserId', null);
+      this.$store.dispatch('setToken', null);
+      router.push("home");
+    }
+  }
+}
+
+</script>
 
 <style lang="scss">
 #app {
