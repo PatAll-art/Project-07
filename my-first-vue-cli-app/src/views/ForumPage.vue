@@ -1,5 +1,6 @@
 <template>
     <div>
+         <div class="logoContainer"> <img class="logo" src="../assets/icon-left-font-monochrome-white.svg" /></div>
         <div class="mainLayout">
             <h1>Today's talk</h1>
             <h2>
@@ -23,7 +24,7 @@
 export default {
     data() {
         return {
-            threads: []
+            threads: [],
         };
     },
     created() {
@@ -54,6 +55,16 @@ export default {
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
+}
+.logoContainer {
+    width: 100%;
+    background-color: #152147;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 8px 0;
+    
 }
 .thread {
     display: flex;
@@ -87,10 +98,10 @@ a {
     margin:10px;
 }
 .singleThread {
-    width: 45%;
+    width: 80%;
     padding: 30px;
     display: flex;
-    flex-direction: row;
+    flex-direction:column;
     flex-wrap: nowrap;
     justify-content: space-evenly;
     border-radius: 30px;

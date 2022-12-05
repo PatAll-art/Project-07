@@ -14,14 +14,6 @@
   flex-wrap: nowrap;
   align-items: center;
 }
-
-.logo {
-  width: 50%;
-  background-color: #152147;
-  block-size: 100px;
-  padding: 9px 100%;
-}
-
 .article {
   background-color: lightgrey;
   border-radius: 20px;

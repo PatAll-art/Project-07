@@ -1,11 +1,12 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/signup">Sign Up</router-link> |
-      <router-link to="/login">Log In</router-link> |
-      <router-link to="/threads">Threads</router-link> |
-      <button @click="logOut">Logout</button>
+      <router-link to="/">Home | </router-link>
+      <router-link to="/signup" v-if="(this.$store.state.userId === '')">Sign Up | </router-link>
+      <router-link to="/login" v-if="(this.$store.state.userId === '')">Log In  </router-link>
+      <router-link to="/threads" v-if="(this.$store.state.userId !== '')">Threads | </router-link>
+      <button @click="logOut" class="logoutButton" v-if="(this.$store.state.userId !== '')">Logout</button>
+
     </nav>
 
     <router-view />
@@ -26,9 +27,9 @@ export default {
   },
   methods: {
     logOut() {
-      this.$store.dispatch('setUserId', null);
-      this.$store.dispatch('setToken', null);
-      router.push("home");
+      this.$store.dispatch('setUserId', '');
+      this.$store.dispatch('setToken', '');
+      router.push("/home");
     }
   }
 }
@@ -58,21 +59,41 @@ nav {
   }
 }
 
+.logoutButton {
+  color: white;
+  background-color: #152147;
+  padding: 8px;
+  border-radius: 30px;
+  border: solid #152147;
+}
+
+
+
 #footer {
-  width: 100%;
-  position: absolute;
   align-self: center;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  padding: 50px;
   background-color: #2c3e50;
-  border-top: solid 5px;
-
-  .logoFooter {
-    width: 15%;
+  position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height: 50px;
+ 
+  img {
+   height: 30px;
   }
-
+} 
+body {
+   min-height: 100vh;
+    margin:0; 
+    display:flex; 
+    flex-direction:column; 
 }
+#app { 
+  flex:1; 
+}
+
 </style>
