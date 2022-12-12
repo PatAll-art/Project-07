@@ -30,6 +30,8 @@ export default {
     logOut() {
       this.$store.dispatch('setUserId', '');
       this.$store.dispatch('setToken', '');
+      this.$store.dispatch('setEmail', 'test');
+      this.$store.dispatch('resetSeen');
       router.push("/home");
     }
   }

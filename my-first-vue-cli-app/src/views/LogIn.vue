@@ -49,9 +49,11 @@ export default {
                 });
         },
         logOut() {
+            this.$store.dispatch('setEmail', '');
+            this.$store.dispatch('resetSeen');
             this.$store.dispatch('setUserId', '');
             this.$store.dispatch('setToken', '');
-            this.$store.dispatch('setEmail', '');
+           
         }
     }
 }

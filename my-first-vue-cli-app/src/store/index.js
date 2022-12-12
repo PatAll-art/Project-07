@@ -25,8 +25,11 @@ export default new Vuex.Store({
     },
     SETSEEN(state, threadId) {
       if (!state.seen.includes(threadId)) {
-        state.seen.push(threadId)
+        state.seen.push(threadId);
       }
+    },
+    RESETSEEN(state) {
+      state.seen = [];
     }
    
     
@@ -43,6 +46,9 @@ export default new Vuex.Store({
     },
     setSeen(context, threadId) {
       context.commit('SETSEEN', threadId)
+    },
+    resetSeen(context) {
+      context.commit('RESETSEEN')
     }
 
   },
