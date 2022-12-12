@@ -4,7 +4,7 @@
             <h1>Hello! {{ userName }}</h1>
         </div>
         <div class="profileCard">
-            <img src=" " class="profile-img">
+
             <h2>Email: {{ email }}</h2>
             <button type="submit" @click="deleteProfile" class="profileButton">Delete Profile</button>
         </div>
@@ -62,11 +62,7 @@ export default {
     align-items: center;
 }
 
-.profile-img {
-    border: solid #152147 150px;
-    width: 100px;
 
-}
 
 .profileButton {
     color: white;
@@ -85,9 +81,6 @@ export default {
     
     
 }
-.profile-img {
-    height: 50%;
-    border: solid #152147 80px;
-}
+
 }
 </style>
