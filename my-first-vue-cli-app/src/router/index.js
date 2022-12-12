@@ -26,6 +26,11 @@ const routes = [
     component: () => import('../views/LogIn.vue')
   },
   {
+    path: '/userprofile',
+    name: 'UserProfile',
+    component: () => import('../views/UserProfile.vue')
+  },
+  {
     path: '/threads',
     name: 'Threads',
     component: () => import('../views/ForumPage.vue')

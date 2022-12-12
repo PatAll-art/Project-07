@@ -7,6 +7,8 @@ export default new Vuex.Store({
   state: {
     userId:'',
     token:'',
+    email: '',
+    seen: []
   
   },
   getters: {
@@ -18,6 +20,14 @@ export default new Vuex.Store({
     SETTOKEN(state, token) {
       state.token = token;
     },
+    SETEMAIL(state, email) {
+      state.email = email;
+    },
+    SETSEEN(state, threadId) {
+      if (!state.seen.includes(threadId)) {
+        state.seen.push(threadId)
+      }
+    }
    
     
   },
@@ -28,6 +38,12 @@ export default new Vuex.Store({
     setToken(context, token) {
       context.commit('SETTOKEN', token)
     },
+    setEmail(context, email) {
+      context.commit('SETEMAIL', email)
+    },
+    setSeen(context, threadId) {
+      context.commit('SETSEEN', threadId)
+    }
 
   },
   modules: {

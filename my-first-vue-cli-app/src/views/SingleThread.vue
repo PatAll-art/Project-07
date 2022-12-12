@@ -6,7 +6,8 @@
 
         <section class="threadSection">
             <h3 class="titleWord">Title</h3>
-            <h1 class="threadTitle">{{ thread.title }}</h1>
+            <h1 class="threadTitle">{{ thread.title }} by {{ thread.userName }}</h1>
+            <img :src=thread.image >
             <p class="threadTxt">
                 {{ thread.text }}
             </p>
@@ -74,7 +75,7 @@ export default {
             .then(res => {
                 this.comments = res;
             })
-
+            this.$store.dispatch('setSeen', threadId);
     },
     methods: {
         postComment() {
@@ -177,5 +178,9 @@ export default {
     padding: 12px;
 } .userName {
     margin:0;
+}
+img {
+    height: 50px;
+    width: 50px;
 }
 </style>

@@ -5,6 +5,7 @@
       <router-link to="/signup" v-if="(this.$store.state.userId === '')">Sign Up | </router-link>
       <router-link to="/login" v-if="(this.$store.state.userId === '')">Log In  </router-link>
       <router-link to="/threads" v-if="(this.$store.state.userId !== '')">Threads | </router-link>
+      <router-link to="/userprofile" v-if="(this.$store.state.userId !== '')">Profile | </router-link>
       <button @click="logOut" class="logoutButton" v-if="(this.$store.state.userId !== '')">Logout</button>
 
     </nav>

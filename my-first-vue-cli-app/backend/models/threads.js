@@ -7,6 +7,7 @@ function model(sequelize) {
     userName: { type: DataTypes.STRING, allowNull: false },
     text: { type: DataTypes.TEXT, allowNull: false },
     title: { type: DataTypes.TEXT, allowNull: false },
+    image: { type: DataTypes.TEXT, allowNull: true }
   };
 
 

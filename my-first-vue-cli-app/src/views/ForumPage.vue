@@ -9,8 +9,8 @@
         </div>
         <div>
            <ol class="threadList">
-            <li class="singleThread" v-for="thread in threads" v-bind:key="thread.id">
-               <router-link :to="'/singlethread/' +  thread.id"> {{ thread.title }} </router-link>
+            <li class="singleThread" v-for="thread in threads" v-bind:key="thread.id" v-bind:class = "(thread.seen)?'seen-thread':'not-seen'">
+               <router-link :to="'/singlethread/' +  thread.id"> {{ thread.title }} by {{ thread.userName }}</router-link>
                 <p>{{ thread.text }}</p>
             </li>
            </ol>
@@ -38,7 +38,15 @@ export default {
                 }
             }).then(res => res.json())
             .then(res => {
-                this.threads = res;
+                for (let thread of res) {
+                    const threadId = thread.id.toString();
+                    const seenIds = this.$store.state.seen;
+                    console.log(threadId);
+                    console.log(seenIds);
+                    thread.seen = seenIds.includes(threadId);
+                    this.threads.push(thread);
+                }
+                //this.threads = res;
             })
     },
   
@@ -107,6 +115,8 @@ a {
     border-radius: 30px;
     background-color: darkgrey;
     margin: 10px;
+  
+
 }
 
 .postLink {
@@ -115,6 +125,14 @@ a {
     padding: 20px;
     border-radius: 30px;
     border: solid #152147;
+}
+.seen-thread {
+
+    opacity: 50%;
+
+}
+.not-seen {
+    opacity: 100%;
 }
 
 </style>

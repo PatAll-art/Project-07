@@ -4,11 +4,10 @@ const commentRoutes = require('./routes/comment');
 const { JsonWebTokenError } = require('jsonwebtoken');
 const router = require('./routes/user');
 const path = require('path');
-
 const express = require("express");
 const app = express();
 
-app.use(express.json());
+app.use(express.json({limit: '25mb'}));
 
 
 app.use((req, res, next) => {
@@ -18,9 +17,9 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', userRoutes);
 app.use('/api/threads/', threadRoutes);
 app.use('/api/comment/', commentRoutes);
-
 
 module.exports = app;

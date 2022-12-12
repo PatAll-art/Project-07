@@ -4,11 +4,15 @@ const Thread = require('../models/threads');
 
 
 exports.addThread = (req, res, next) => {
+    req.body.data = JSON.parse(req.body.data);
+    const url = req.protocol + '://' + req.get('host');
     const thread = new db.Thread({
-        userName: req.body.userName,
-        title: req.body.title,
-        text: req.body.text
+        userName: req.body.data.userName,
+        title: req.body.data.title,
+        text: req.body.data.text,
+        image: url +'/images/' + req.file.filename
     });
+    console.log(thread);
     thread.save().then(
         () => {
             res.status(201).json({
@@ -17,7 +21,7 @@ exports.addThread = (req, res, next) => {
         }
     ).catch(
         (error) => {
-            res.status(500).son({
+            res.status(500).json({
                 error: error
             });
         }

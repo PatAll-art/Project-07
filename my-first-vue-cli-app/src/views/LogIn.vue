@@ -42,14 +42,15 @@ export default {
                         console.log(data);
                         this.$store.dispatch('setUserId', data.userId);
                         this.$store.dispatch('setToken', data.token);
+                        this.$store.dispatch('setEmail', data.email);
                         router.push("Threads");
                     }
 
                 });
         },
         logOut() {
-            this.$store.dispatch('setUserId', null);
-            this.$store.dispatch('setToken', null);
+            this.$store.dispatch('setUserId', '');
+            this.$store.dispatch('setToken', '');
         }
     }
 }

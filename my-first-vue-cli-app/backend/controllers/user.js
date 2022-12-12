@@ -60,7 +60,8 @@ exports.login = (req, res, next) => {
               { expiresIn: '24h' });
             res.status(200).json({
               userId: user.userName,
-              token: token
+              token: token,
+              email: user.email
             });
           }
         ).catch(
@@ -78,4 +79,16 @@ exports.login = (req, res, next) => {
         });
       }
     );
-  }
+  };
+
+exports.deleteUser = (req, res, next) => {
+  db.User.findOne({ userName: req.params.id }).then((user) =>{
+  user.destroy()
+    .then(() => {
+      res.status(200).json({
+        message: 'User was succerfully deleted'
+      });
+    });
+  });
+};
+
