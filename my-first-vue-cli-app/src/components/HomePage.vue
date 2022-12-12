@@ -30,8 +30,11 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding: 8px 0;
-    
 }
+.logo {
+    width: 50%;
+}
+
 
 .article {
     background-color: lightgrey;

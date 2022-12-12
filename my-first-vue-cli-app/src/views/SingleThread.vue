@@ -7,7 +7,7 @@
         <section class="threadSection">
             <h3 class="titleWord">Title</h3>
             <h1 class="threadTitle">{{ thread.title }} by {{ thread.userName }}</h1>
-            <img :src=thread.image >
+            <img :src=thread.image>
             <p class="threadTxt">
                 {{ thread.text }}
             </p>
@@ -18,10 +18,10 @@
             </textarea>
             <button class="submitButton" type="submit" @click="postComment">Comment</button>
 
-            <div>
+            <div class="commentContainer">
                 <ol class="commentList">
                     <li class="singleComment" v-for="comment in comments" v-bind:key="comment.id">
-                        <h4 class="userName">{{ comment.userName }}</h4>
+                        <h4 class="userName">{{ comment.userName }}: </h4>
                         <p class="commentTxt">{{ comment.text }}</p>
                     </li>
                 </ol>
@@ -75,7 +75,7 @@ export default {
             .then(res => {
                 this.comments = res;
             })
-            this.$store.dispatch('setSeen', threadId);
+        this.$store.dispatch('setSeen', threadId);
     },
     methods: {
         postComment() {
@@ -113,7 +113,7 @@ export default {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: stretch;
+    align-items: center;
     align-content: center;
 
 }
@@ -137,8 +137,9 @@ export default {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    align-content: flex-start;
-    align-items: flex-start;
+    width: 75%;
+    align-items: flex-end;
+    margin-bottom: 20px;
 }
 
 .commentTitle {
@@ -147,7 +148,7 @@ export default {
 }
 
 .commentBox {
-    width: 100%;
+    width: 50%;
     border-radius: 16px;
     padding: 5px;
 }
@@ -164,23 +165,73 @@ export default {
 
 .commentList {
     list-style: none;
+    margin: 0;
+    padding: 0;
 
 }
 
 .singleComment {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     flex-wrap: wrap;
     margin: 8px;
     border: solid #152147;
     border-radius: 30px;
     padding: 12px;
-} .userName {
-    margin:0;
+    width: 500px;
 }
+
+.userName {
+    margin: 0;
+}
+
 img {
-    height: 50px;
-    width: 50px;
+    height: 10%;
+    width: 10%;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .threadSection {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .commentSection {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .commentList {
+        margin: 0;
+        padding: 0;
+        display: flex;
+
+    }
+
+    .commentBox {
+        width: 80%;
+    }
+
+    .singleComment {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
 }
 </style>

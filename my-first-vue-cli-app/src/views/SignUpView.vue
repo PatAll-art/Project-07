@@ -101,4 +101,12 @@
     flex-direction: column;
     align-items: center;
 }
+
+@media only screen and (max-width: 768px) {
+    .registerAcc input {
+        
+       width: 75%;
+    }
+}
+
 </style>

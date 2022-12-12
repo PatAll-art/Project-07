@@ -39,8 +39,9 @@ exports.signup = (req, res, next) => {
     );
 };
 exports.login = (req, res, next) => {
-    db.User.findOne({ userName: req.body.userName }).then(
+    db.User.findOne({ where: { userName: req.body.userName }}).then(
       (user) => {
+        console.log(req.body.userName)
         console.log(user);
         if (!user) {
           return res.status(401).json({
@@ -55,7 +56,7 @@ exports.login = (req, res, next) => {
               });
             }
             const token = jwt.sign(
-              { userId: user._id },
+              { userId: user.id },
               'RANDOM_TOKEN_SECRET',
               { expiresIn: '24h' });
             res.status(200).json({

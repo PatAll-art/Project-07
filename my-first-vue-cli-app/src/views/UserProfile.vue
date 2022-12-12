@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="app">
         <div class="hello-username">
             <h1>Hello! {{ userName }}</h1>
         </div>
@@ -45,13 +45,14 @@ export default {
 </script>
 
 <style>
+
 .hello-username {
     display: flex;
 }
 
 .profileCard {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
+    max-width: 50%;
     margin: auto;
     text-align: center;
     padding: 20px;
@@ -63,6 +64,7 @@ export default {
 
 .profile-img {
     border: solid #152147 150px;
+    width: 100px;
 
 }
 
@@ -74,5 +76,18 @@ export default {
     border: solid #152147;
     font-size: large;
     font-weight: bold;
+}
+@media only screen and (max-width: 768px) {
+   
+.profileCard {
+
+    max-width:100%;
+    
+    
+}
+.profile-img {
+    height: 50%;
+    border: solid #152147 80px;
+}
 }
 </style>

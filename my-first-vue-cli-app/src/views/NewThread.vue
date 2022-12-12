@@ -5,7 +5,7 @@
         <div class="formText">
             <input class="title" type="text" v-model="title" placeholder="Title" />
             <textarea class="textBox title" v-model="text" placeholder=" Today it was...." />
-            <input type="file" @change="onFileSelected">
+            <input class="chooseFile" type="file" @change="onFileSelected">
             <button class="submitButton title" type="submit" @click="postThread">Submit</button>
         </div>
     </div>
@@ -88,5 +88,17 @@ export default {
 .submitButton {
     background-color: #152147;
     color: white;
+}
+
+@media only screen and (max-width: 768px) {
+    .newPost {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+    }
+    .formText {
+        width: 100%;
+    }
 }
 </style>

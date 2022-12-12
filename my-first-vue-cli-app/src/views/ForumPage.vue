@@ -63,6 +63,7 @@ export default {
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
+   
 }
 .logoContainer {
     width: 100%;
@@ -134,5 +135,33 @@ a {
 .not-seen {
     opacity: 100%;
 }
+@media only screen and (max-width: 768px) {
+
+.mainLayout {
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+   
+}
+h1 {
+    font-size:20px;
+    margin: 5px;
+    padding: 0;
+}
+.postLink {
+    font-size:15px;
+    padding: 10px;
+    margin: 0;
+ 
+}
+.threadList {
+    padding: 0;
+   
+}
+}
+
 
 </style>

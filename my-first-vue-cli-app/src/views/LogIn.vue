@@ -51,6 +51,7 @@ export default {
         logOut() {
             this.$store.dispatch('setUserId', '');
             this.$store.dispatch('setToken', '');
+            this.$store.dispatch('setEmail', '');
         }
     }
 }
@@ -106,5 +107,10 @@ export default {
     justify-content: space-evenly;
     padding: 8px 0;
 }
-    
+@media only screen and (max-width: 768px) {
+    .registerAcc input {
+        
+       width: 75%;
+    }
+}
 </style>

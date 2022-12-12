@@ -3,7 +3,7 @@
     <nav>
       <router-link to="/">Home | </router-link>
       <router-link to="/signup" v-if="(this.$store.state.userId === '')">Sign Up | </router-link>
-      <router-link to="/login" v-if="(this.$store.state.userId === '')">Log In  </router-link>
+      <router-link to="/login" v-if="(this.$store.state.userId === '')">Log In </router-link>
       <router-link to="/threads" v-if="(this.$store.state.userId !== '')">Threads | </router-link>
       <router-link to="/userprofile" v-if="(this.$store.state.userId !== '')">Profile | </router-link>
       <button @click="logOut" class="logoutButton" v-if="(this.$store.state.userId !== '')">Logout</button>
@@ -38,12 +38,15 @@ export default {
 </script>
 
 <style lang="scss">
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  position: relative;
+  min-height: 100vh;
 }
 
 nav {
@@ -77,24 +80,25 @@ nav {
   flex-wrap: wrap;
   align-items: center;
   background-color: #2c3e50;
-  position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   height: 50px;
- 
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+
   img {
-   height: 30px;
+    height: 20px;
   }
-} 
-body {
-   min-height: 100vh;
-    margin:0; 
-    display:flex; 
-    flex-direction:column; 
-}
-#app { 
-  flex:1; 
 }
 
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#app {
+  flex: 1;
+}
 </style>
